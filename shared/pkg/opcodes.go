@@ -27,7 +27,7 @@ const (
 	Cgt
 
 	// Stack Control
-	Ldc4
+	Ldc8
 	Pop
 
 	// Misc
