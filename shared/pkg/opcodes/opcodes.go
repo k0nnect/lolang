@@ -1,4 +1,4 @@
-package pkg
+package opcodes
 
 type OpCode int
 
