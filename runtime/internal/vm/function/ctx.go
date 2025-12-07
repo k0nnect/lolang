@@ -8,6 +8,7 @@ import (
 
 type Ctx struct {
 	Vm        *vm.VCtx
+	InstrPtr  int
 	Function  *function.Function
 	Stack     data.Stack[data.Value]
 	Locals    []data.Value
