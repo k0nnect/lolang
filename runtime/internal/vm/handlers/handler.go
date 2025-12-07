@@ -24,4 +24,8 @@ var Handlers = map[opcodes.OpCode]Handler{
 	opcodes.Ldarg: ldarg,
 	opcodes.Pop:   pop,
 	opcodes.Dup:   dup,
+
+	// Misc
+	opcodes.Nop: nop,
+	opcodes.Ret: ret,
 }
