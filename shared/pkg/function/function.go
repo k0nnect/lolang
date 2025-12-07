@@ -11,7 +11,7 @@ type Function struct {
 	Instructions map[int]Instruction
 	Locals       []Local
 	Arguments    []Argument
-	ReturnType   types.Type
+	ReturnType   types.TypeCode
 }
 
 type Instruction struct {
