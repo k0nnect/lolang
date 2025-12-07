@@ -1,6 +1,8 @@
 package vm
 
-import "runtime/internal/vm/function"
+import (
+	"shared/pkg/function"
+)
 
 type VCtx struct {
 	Functions map[int]function.Function
