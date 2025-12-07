@@ -5,7 +5,8 @@ import (
 )
 
 type VCtx struct {
-	Functions map[int]function.Function
+	EntryPoint *function.Function
+	Functions  map[int]function.Function
 }
 
 // Error halts the virtual machine and kills the running application
