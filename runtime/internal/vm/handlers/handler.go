@@ -8,6 +8,17 @@ import (
 type Handler func(ctx function.Ctx)
 
 var Handlers = map[opcodes.OpCode]Handler{
-	opcodes.Pop: pop,
+	// Arithmetic instructions
 	opcodes.Add: add,
+	opcodes.Sub: sub,
+	opcodes.Div: div,
+	opcodes.Mul: mul,
+	opcodes.Rem: rem,
+	opcodes.Xor: xor,
+	opcodes.Not: not,
+	opcodes.Or:  or,
+	opcodes.Neg: neg,
+
+	// Stack control
+	opcodes.Pop: pop,
 }
