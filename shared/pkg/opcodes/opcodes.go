@@ -36,6 +36,7 @@ const (
 	Ldc8 OpCode = iota + 400
 	Ldarg
 	Pop
+	Dup
 )
 
 // Misc

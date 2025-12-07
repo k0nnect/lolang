@@ -21,4 +21,5 @@ var Handlers = map[opcodes.OpCode]Handler{
 
 	// Stack control
 	opcodes.Pop: pop,
+	opcodes.Dup: dup,
 }
