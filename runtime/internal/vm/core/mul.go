@@ -2,7 +2,6 @@ package core
 
 import (
 	"errors"
-	"fmt"
 	"shared/pkg/data"
 	"shared/pkg/types"
 )
@@ -13,7 +12,6 @@ var mul = Handler(func(ctx *FunctionCtx) {
 
 	if first.Type == types.LoInt && second.Type == types.LoInt {
 		v, err := data.NewValue(first.GetInt() * second.GetInt())
-		fmt.Println(first.GetInt() * second.GetInt())
 		if err != nil {
 			ctx.Vm.Error(err)
 		}
