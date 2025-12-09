@@ -26,8 +26,9 @@ type Argument struct {
 }
 
 type Local struct {
-	Index        int
-	Name         string
-	Type         types.Type
-	InitialValue data.Value
+	Index           int
+	Name            string
+	Type            types.Type
+	HasInitialValue bool
+	InitialValue    data.Value
 }
