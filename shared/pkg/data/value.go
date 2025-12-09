@@ -14,9 +14,13 @@ type Value struct {
 
 func NewValue(v any) (Value, error) {
 	switch x := v.(type) {
+	case int:
+		return NewValue(int64(x))
+	case int32:
+		return NewValue(int64(x))
 	case int64:
 		data := make([]byte, 8)
-		binary.BigEndian.PutUint64(data, uint64(x))
+		binary.LittleEndian.PutUint64(data, uint64(x))
 		return Value{
 			Type: types.LoInt,
 			Data: data,
@@ -37,7 +41,7 @@ func NewValue(v any) (Value, error) {
 }
 
 func (v *Value) GetInt() int64 {
-	return int64(v.Data[0])
+	return int64(binary.LittleEndian.Uint64(v.Data))
 }
 
 func (v *Value) GetBool() bool {
