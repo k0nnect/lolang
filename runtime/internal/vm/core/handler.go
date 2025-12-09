@@ -32,9 +32,11 @@ var Handlers = map[opcodes.OpCode]Handler{
 
 	// Stack control
 	opcodes.Ldc8:  ldc8,
-	opcodes.Ldarg: ldarg,
+	opcodes.LdArg: ldarg,
 	opcodes.Pop:   pop,
 	opcodes.Dup:   dup,
+	opcodes.LdLoc: ldLoc,
+	opcodes.StLoc: stLoc,
 
 	// Misc
 	opcodes.Nop: nop,

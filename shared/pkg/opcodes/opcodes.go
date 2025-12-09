@@ -34,9 +34,11 @@ const (
 // Stack Control
 const (
 	Ldc8 OpCode = iota + 400
-	Ldarg
+	LdArg
 	Pop
 	Dup
+	LdLoc
+	StLoc
 )
 
 // Misc
