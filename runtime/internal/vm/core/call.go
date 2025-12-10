@@ -1,7 +1,7 @@
 package core
 
 import (
-	"runtime/internal/vm/std"
+	"runtime/pkg/std"
 	"shared/pkg/data"
 	"shared/pkg/types"
 )

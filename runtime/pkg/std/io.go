@@ -17,10 +17,30 @@ var printFunc = stdFunc{
 		},
 	},
 	Execute: func(values []data.Value) data.Value {
+		fmt.Print(values[0].GetString())
+
+		return data.Value{
+			Type: types.LoVoid,
+		}
+	},
+	ReturnType: types.LoVoid,
+}
+
+var printLnFunc = stdFunc{
+	Name: "println",
+	Arguments: []function.Argument{
+		{
+			Index: 0,
+			Name:  "str",
+			Type:  types.LoString,
+		},
+	},
+	Execute: func(values []data.Value) data.Value {
 		fmt.Println(values[0].GetString())
 
 		return data.Value{
 			Type: types.LoVoid,
 		}
 	},
+	ReturnType: types.LoVoid,
 }
