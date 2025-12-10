@@ -22,7 +22,7 @@ type Instruction struct {
 type Argument struct {
 	Index int
 	Name  string
-	Type  types.Type
+	Type  types.TypeCode
 }
 
 type Local struct {
