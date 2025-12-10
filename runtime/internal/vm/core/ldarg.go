@@ -1,6 +1,6 @@
 package core
 
-var ldarg = Handler(func(ctx *FunctionCtx) {
+var ldarg = handler(func(ctx *functionCtx) {
 	idxOp := ctx.Function.Instructions[ctx.InstrPtr].Operand
 	idx := idxOp.GetInt()
 

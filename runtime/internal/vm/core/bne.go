@@ -1,6 +1,6 @@
 package core
 
-var bne = Handler(func(ctx *FunctionCtx) {
+var bne = handler(func(ctx *functionCtx) {
 	v1 := ctx.Stack.Pop()
 	v2 := ctx.Stack.Pop()
 

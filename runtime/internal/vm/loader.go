@@ -16,7 +16,7 @@ func ExecuteProgram(program []byte) error {
 		return errors.New("an invalid program has been provided")
 	}
 
-	core.NewVmCtx(&vmData).Execute()
+	core.RunVm(&vmData)
 
 	return nil
 }

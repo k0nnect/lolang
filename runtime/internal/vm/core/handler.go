@@ -4,9 +4,9 @@ import (
 	"shared/pkg/opcodes"
 )
 
-type Handler func(ctx *FunctionCtx)
+type handler func(ctx *functionCtx)
 
-var Handlers = map[opcodes.OpCode]Handler{
+var handlers = map[opcodes.OpCode]handler{
 	// Arithmetic instructions
 	opcodes.Add: add,
 	opcodes.Sub: sub,
@@ -45,5 +45,5 @@ var Handlers = map[opcodes.OpCode]Handler{
 
 // Avoid cyclic dependency
 func init() {
-	Handlers[opcodes.Call] = call
+	handlers[opcodes.Call] = call
 }

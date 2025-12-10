@@ -1,6 +1,6 @@
 package core
 
-var stLoc = Handler(func(ctx *FunctionCtx) {
+var stLoc = handler(func(ctx *functionCtx) {
 	instr := ctx.Function.Instructions[ctx.InstrPtr]
 	token := instr.Operand.GetInt()
 

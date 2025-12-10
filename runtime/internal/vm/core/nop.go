@@ -1,5 +1,5 @@
 package core
 
-var nop = Handler(func(ctx *FunctionCtx) {
+var nop = handler(func(ctx *functionCtx) {
 	// Do nothing
 })

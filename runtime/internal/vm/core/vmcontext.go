@@ -6,14 +6,16 @@ import (
 	"shared/pkg/vm"
 )
 
-type VCtx struct {
+const nonStdFunctionStart = 1000000
+
+type vCtx struct {
 	EntryPoint *function.Function
 	Functions  map[int]function.Function
-	CallStack  data.Stack[*FunctionCtx]
+	CallStack  data.Stack[*functionCtx]
 }
 
-type FunctionCtx struct {
-	Vm        *VCtx
+type functionCtx struct {
+	Vm        *vCtx
 	InstrPtr  int
 	Function  *function.Function
 	Stack     data.Stack[data.Value]
@@ -22,8 +24,13 @@ type FunctionCtx struct {
 	Running   bool
 }
 
-func NewVmCtx(vm *vm.Vm) *VCtx {
-	ctx := &VCtx{
+func RunVm(vm *vm.Vm) {
+	ctx := newVmCtx(vm)
+	ctx.execute()
+}
+
+func newVmCtx(vm *vm.Vm) *vCtx {
+	ctx := &vCtx{
 		Functions: vm.Functions,
 	}
 
@@ -33,17 +40,17 @@ func NewVmCtx(vm *vm.Vm) *VCtx {
 	return ctx
 }
 
-// Error halts the virtual machine and kills the running application
-func (vm *VCtx) Error(err error) {
+// error halts the virtual machine and kills the running application
+func (vm *vCtx) error(err error) {
 	panic(err)
 }
 
-func (vm *VCtx) Execute() {
+func (vm *vCtx) execute() {
 	ctx := newFunctionCtx(vm, vm.EntryPoint)
-	ctx.Execute()
+	ctx.execute()
 }
 
-func newFunctionCtx(vm *VCtx, fn *function.Function) *FunctionCtx {
+func newFunctionCtx(vm *vCtx, fn *function.Function) *functionCtx {
 	var locals map[int]data.Value
 	for _, local := range fn.Locals {
 		if !local.HasInitialValue {
@@ -53,7 +60,7 @@ func newFunctionCtx(vm *VCtx, fn *function.Function) *FunctionCtx {
 		locals[local.Index] = local.InitialValue
 	}
 
-	return &FunctionCtx{
+	return &functionCtx{
 		Vm:       vm,
 		InstrPtr: 0,
 		Function: fn,
@@ -62,7 +69,7 @@ func newFunctionCtx(vm *VCtx, fn *function.Function) *FunctionCtx {
 	}
 }
 
-func (fn *FunctionCtx) Execute() {
+func (fn *functionCtx) execute() {
 	fn.Running = true
 
 	for fn.Running {
@@ -70,8 +77,8 @@ func (fn *FunctionCtx) Execute() {
 
 		instr := fn.Function.Instructions[fn.InstrPtr]
 
-		// Execute the instruction
-		Handlers[instr.OpCode](fn)
+		// execute the instruction
+		handlers[instr.OpCode](fn)
 
 		// If the ptr has been changed than a branch instruction was called and changed the flow
 		if ptr != fn.InstrPtr {

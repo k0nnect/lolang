@@ -1,6 +1,6 @@
 package core
 
-var call = Handler(func(ctx *FunctionCtx) {
+var call = handler(func(ctx *functionCtx) {
 	instr := ctx.Function.Instructions[ctx.InstrPtr]
 	token := instr.Operand.GetInt()
 
@@ -13,5 +13,5 @@ var call = Handler(func(ctx *FunctionCtx) {
 		fn.Arguments = append(fn.Arguments, ctx.Stack.Pop())
 	}
 
-	fn.Execute()
+	fn.execute()
 })

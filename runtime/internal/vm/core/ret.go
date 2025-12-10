@@ -4,7 +4,7 @@ import (
 	"shared/pkg/types"
 )
 
-var ret = Handler(func(ctx *FunctionCtx) {
+var ret = handler(func(ctx *functionCtx) {
 	ctx.Running = false
 
 	if ctx.Vm.CallStack.Len() == 0 {

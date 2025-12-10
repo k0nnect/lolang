@@ -4,7 +4,7 @@ import (
 	"shared/pkg/data"
 )
 
-var cgt = Handler(func(ctx *FunctionCtx) {
+var cgt = handler(func(ctx *functionCtx) {
 	v1 := ctx.Stack.Pop()
 	v2 := ctx.Stack.Pop()
 

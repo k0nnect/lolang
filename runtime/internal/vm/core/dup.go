@@ -1,5 +1,5 @@
 package core
 
-var dup = Handler(func(ctx *FunctionCtx) {
+var dup = handler(func(ctx *functionCtx) {
 	ctx.Stack.Push(ctx.Stack.Peek())
 })

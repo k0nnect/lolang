@@ -1,5 +1,5 @@
 package core
 
-var pop = Handler(func(ctx *FunctionCtx) {
+var pop = handler(func(ctx *functionCtx) {
 	ctx.Stack.Pop()
 })

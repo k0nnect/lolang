@@ -6,17 +6,17 @@ import (
 	"shared/pkg/types"
 )
 
-var neg = Handler(func(ctx *FunctionCtx) {
+var neg = handler(func(ctx *functionCtx) {
 	var num = ctx.Stack.Pop()
 
 	if num.Type == types.LoInt {
 		v, err := data.NewValue(-num.GetInt())
 		if err != nil {
-			ctx.Vm.Error(err)
+			ctx.Vm.error(err)
 		}
 		ctx.Stack.Push(v)
 		return
 	}
 
-	ctx.Vm.Error(errors.New("unable to negate the specified type"))
+	ctx.Vm.error(errors.New("unable to negate the specified type"))
 })
