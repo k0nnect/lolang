@@ -49,7 +49,7 @@ func (vm *vCtx) execute() {
 }
 
 func newFunctionCtx(vm *vCtx, fn *function.Function) *functionCtx {
-	var locals map[int]data.Value
+	var locals = map[int]data.Value{}
 	for _, local := range fn.Locals {
 		if !local.HasInitialValue {
 			continue

@@ -21,8 +21,15 @@ type codegen struct {
 func (gen *codegen) compileFunction() error {
 	gen.curVmFn.Instructions = map[int]function.Instruction{}
 
-	for _, p := range gen.curFunc.Params {
-		gen.allocLocal(p.Name, p.Type)
+	paramSlots := make([]int, len(gen.curFunc.Params))
+	for i, p := range gen.curFunc.Params {
+		slot := gen.allocLocal(p.Name, p.Type)
+		paramSlots[i] = slot
+	}
+
+	for i := len(paramSlots) - 1; i >= 0; i-- {
+		slot := paramSlots[i]
+		gen.emit(opcodes.StLoc, data.MustNewValue(slot))
 	}
 
 	if err := gen.compileBlock(gen.curFunc.Body); err != nil {
@@ -48,7 +55,7 @@ func (gen *codegen) allocLocal(name string, t string) int {
 		log.Fatalf("unable to find local type: %s\n", t)
 	}
 
-	gen.curVmFn.Locals = append(gen.curVmFn.Locals, function.Local{
+	gen.curVmFn.Locals = append(gen.curVmFn.Locals, &function.Local{
 		Index: gen.nextSlot,
 		Name:  name,
 		Type:  *localType,
@@ -168,7 +175,7 @@ func (gen *codegen) compileFor(f *ForLoop) error {
 func (gen *codegen) getLocalByName(name string) *function.Local {
 	for _, local := range gen.curVmFn.Locals {
 		if local.Name == name {
-			return &local
+			return local
 		}
 	}
 
@@ -188,7 +195,6 @@ func (gen *codegen) compileExpr(e *Expr) error {
 		}
 
 		gen.emit(opcodes.StLoc, data.MustNewValue(local.Index))
-		gen.emit(opcodes.LdLoc, data.MustNewValue(local.Index))
 		return nil
 	}
 	return gen.compileSimpleExpr(e.Simple)
