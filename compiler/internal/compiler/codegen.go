@@ -157,8 +157,10 @@ func (gen *codegen) compileFor(f *ForLoop) error {
 
 	// patch to here
 	endPC := len(gen.curVmFn.Instructions)
-	j := gen.curVmFn.Instructions[jmpFalseIdx]
-	j.Operand = data.MustNewValue(endPC)
+	gen.curVmFn.Instructions[jmpFalseIdx] = function.Instruction{
+		OpCode:  opcodes.Bf,
+		Operand: data.MustNewValue(endPC),
+	}
 
 	return nil
 }
