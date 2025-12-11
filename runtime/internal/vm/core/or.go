@@ -17,6 +17,13 @@ var or = handler(func(ctx *functionCtx) {
 		}
 		ctx.Stack.Push(v)
 		return
+	} else if first.Type == types.LoBool && second.Type == types.LoBool {
+		v, err := data.NewValue(first.GetBool() || second.GetBool())
+		if err != nil {
+			ctx.Vm.error(err)
+		}
+		ctx.Stack.Push(v)
+		return
 	}
 
 	ctx.Vm.error(errors.New("unable to or the specified type pattern"))

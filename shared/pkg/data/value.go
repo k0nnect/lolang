@@ -45,6 +45,15 @@ func NewValue(v any) (Value, error) {
 	return Value{}, errors.New("invalid value type")
 }
 
+func MustNewValue(v any) Value {
+	val, err := NewValue(v)
+	if err != nil {
+		panic(err)
+	}
+
+	return val
+}
+
 func (v *Value) GetInt() int64 {
 	return int64(binary.LittleEndian.Uint64(v.Data))
 }
@@ -58,6 +67,10 @@ func (v *Value) GetString() string {
 }
 
 func (v *Value) Equal(other *Value) bool {
+	if (v.Type == types.LoBool && other.Type == types.LoInt) || (v.Type == types.LoInt && other.Type == types.LoBool) {
+		return v.Data[0] == other.Data[0]
+	}
+
 	if v.Type != other.Type || len(v.Data) != len(other.Data) {
 		return false
 	}

@@ -18,7 +18,7 @@ func TestExecuteProgram(t *testing.T) {
 
 	v := vm.Vm{
 		EntryPoint: 1000000,
-		Functions: map[int]function.Function{
+		Functions: map[int]*function.Function{
 			1000000: {
 				Token: 1000000,
 				Instructions: map[int]function.Instruction{

@@ -4,5 +4,5 @@ import "shared/pkg/function"
 
 type Vm struct {
 	EntryPoint int
-	Functions  map[int]function.Function
+	Functions  map[int]*function.Function
 }

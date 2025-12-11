@@ -9,6 +9,7 @@ import (
 const CustomFunctionStart = 1000000
 
 type Function struct {
+	Name         string
 	Token        int // Identifier of the function similar to mdtoken in MSIL
 	Instructions map[int]Instruction
 	Locals       []Local

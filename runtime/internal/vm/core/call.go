@@ -31,7 +31,7 @@ var call = handler(func(ctx *functionCtx) {
 	}
 
 	target := ctx.Vm.Functions[int(token)]
-	fn := newFunctionCtx(ctx.Vm, &target)
+	fn := newFunctionCtx(ctx.Vm, target)
 
 	ctx.Vm.CallStack.Push(fn)
 

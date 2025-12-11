@@ -22,6 +22,8 @@ const (
 	Bne
 	Blt
 	Bgt
+	Bt
+	Bf
 )
 
 // Equality
@@ -29,6 +31,8 @@ const (
 	Cmp OpCode = iota + 300
 	Clt
 	Cgt
+	Cle
+	Cge
 )
 
 // Stack Control
@@ -39,6 +43,7 @@ const (
 	Dup
 	LdLoc
 	StLoc
+	LdStr
 )
 
 // Misc

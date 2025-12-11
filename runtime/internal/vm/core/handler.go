@@ -24,11 +24,15 @@ var handlers = map[opcodes.OpCode]handler{
 	opcodes.Bne: bne,
 	opcodes.Bgt: bgt,
 	opcodes.Blt: blt,
+	opcodes.Bt:  bt,
+	opcodes.Bf:  bf,
 
 	// Equality comparisons
 	opcodes.Cmp: cmp,
 	opcodes.Clt: clt,
 	opcodes.Cgt: cgt,
+	opcodes.Cle: cle,
+	opcodes.Cge: cge,
 
 	// Stack control
 	opcodes.Ldc8:  ldc8,
@@ -37,6 +41,7 @@ var handlers = map[opcodes.OpCode]handler{
 	opcodes.Dup:   dup,
 	opcodes.LdLoc: ldLoc,
 	opcodes.StLoc: stLoc,
+	opcodes.LdStr: ldStr,
 
 	// Misc
 	opcodes.Nop: nop,

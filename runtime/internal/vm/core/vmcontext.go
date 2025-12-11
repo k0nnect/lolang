@@ -8,7 +8,7 @@ import (
 
 type vCtx struct {
 	EntryPoint *function.Function
-	Functions  map[int]function.Function
+	Functions  map[int]*function.Function
 	CallStack  data.Stack[*functionCtx]
 }
 
@@ -33,7 +33,7 @@ func newVmCtx(vm *vm.Vm) *vCtx {
 	}
 
 	ep := ctx.Functions[vm.EntryPoint]
-	ctx.EntryPoint = &ep
+	ctx.EntryPoint = ep
 
 	return ctx
 }
