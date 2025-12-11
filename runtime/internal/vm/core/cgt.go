@@ -5,12 +5,12 @@ import (
 )
 
 var cgt = handler(func(ctx *functionCtx) {
-	v1 := ctx.Stack.Pop()
-	v2 := ctx.Stack.Pop()
+	right := ctx.Stack.Pop()
+	left := ctx.Stack.Pop()
 
 	gt := false
 
-	if v1.GetInt() > v2.GetInt() {
+	if left.GetInt() > right.GetInt() {
 		gt = true
 	}
 
