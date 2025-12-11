@@ -6,6 +6,8 @@ import (
 	"shared/pkg/types"
 )
 
+const CustomFunctionStart = 1000000
+
 type Function struct {
 	Token        int // Identifier of the function similar to mdtoken in MSIL
 	Instructions map[int]Instruction

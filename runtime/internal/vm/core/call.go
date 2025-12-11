@@ -3,6 +3,7 @@ package core
 import (
 	"runtime/pkg/std"
 	"shared/pkg/data"
+	"shared/pkg/function"
 	"shared/pkg/types"
 )
 
@@ -11,7 +12,7 @@ var call = handler(func(ctx *functionCtx) {
 	token := instr.Operand.GetInt()
 
 	// Check to see if this should be handled by the std lib
-	if token < CustomFunctionStart {
+	if token < function.CustomFunctionStart {
 		stdFn := std.StdLib[int(token)]
 
 		var args []data.Value

@@ -6,8 +6,6 @@ import (
 	"shared/pkg/vm"
 )
 
-const CustomFunctionStart = 1000000
-
 type vCtx struct {
 	EntryPoint *function.Function
 	Functions  map[int]function.Function
