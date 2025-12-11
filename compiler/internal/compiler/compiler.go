@@ -4,9 +4,13 @@ import "log"
 
 func Compile() {
 	src := `
-lo main(string name) {
+lo main() {
     println("hello");
     return;
+}
+
+lo int bruh() {
+	return 5;
 }
 `
 

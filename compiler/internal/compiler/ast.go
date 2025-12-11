@@ -6,8 +6,8 @@ type Program struct {
 
 type Function struct {
 	Lo      string   `"lo"`
-	Name    string   `@Ident`
 	RetType string   `[ @Type ]`
+	Name    string   `@Ident`
 	Params  []*Param `"(" ( @@ ( "," @@ )* )? ")"`
 	Body    *Block   `@@`
 }
