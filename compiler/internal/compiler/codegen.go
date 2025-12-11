@@ -27,7 +27,7 @@ func (gen *codegen) compileFunction() error {
 		paramSlots[i] = slot
 	}
 
-	for i := len(paramSlots) - 1; i >= 0; i-- {
+	for i := 0; i < len(paramSlots); i++ {
 		slot := paramSlots[i]
 		gen.emit(opcodes.StLoc, data.MustNewValue(slot))
 	}

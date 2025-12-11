@@ -36,7 +36,7 @@ var call = handler(func(ctx *functionCtx) {
 	ctx.Vm.CallStack.Push(fn)
 
 	for range target.Arguments {
-		fn.Arguments = append(fn.Arguments, ctx.Stack.Pop())
+		fn.Stack.Push(ctx.Stack.Pop())
 	}
 
 	fn.execute()
