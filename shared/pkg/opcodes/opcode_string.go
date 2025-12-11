@@ -30,12 +30,11 @@ func _() {
 	_ = x[Cle-303]
 	_ = x[Cge-304]
 	_ = x[Ldc8-400]
-	_ = x[LdArg-401]
-	_ = x[Pop-402]
-	_ = x[Dup-403]
-	_ = x[LdLoc-404]
-	_ = x[StLoc-405]
-	_ = x[LdStr-406]
+	_ = x[Pop-401]
+	_ = x[Dup-402]
+	_ = x[LdLoc-403]
+	_ = x[StLoc-404]
+	_ = x[LdStr-405]
 	_ = x[Nop-500]
 	_ = x[Ret-501]
 	_ = x[Call-502]
@@ -45,7 +44,7 @@ const (
 	_OpCode_name_0 = "AddSubMulDivRemXorNotOrNeg"
 	_OpCode_name_1 = "BrBeBneBltBgtBtBf"
 	_OpCode_name_2 = "CmpCltCgtCleCge"
-	_OpCode_name_3 = "Ldc8LdArgPopDupLdLocStLocLdStr"
+	_OpCode_name_3 = "Ldc8PopDupLdLocStLocLdStr"
 	_OpCode_name_4 = "NopRetCall"
 )
 
@@ -53,7 +52,7 @@ var (
 	_OpCode_index_0 = [...]uint8{0, 3, 6, 9, 12, 15, 18, 21, 23, 26}
 	_OpCode_index_1 = [...]uint8{0, 2, 4, 7, 10, 13, 15, 17}
 	_OpCode_index_2 = [...]uint8{0, 3, 6, 9, 12, 15}
-	_OpCode_index_3 = [...]uint8{0, 4, 9, 12, 15, 20, 25, 30}
+	_OpCode_index_3 = [...]uint8{0, 4, 7, 10, 15, 20, 25}
 	_OpCode_index_4 = [...]uint8{0, 3, 6, 10}
 )
 
@@ -68,7 +67,7 @@ func (i OpCode) String() string {
 	case 300 <= i && i <= 304:
 		i -= 300
 		return _OpCode_name_2[_OpCode_index_2[i]:_OpCode_index_2[i+1]]
-	case 400 <= i && i <= 406:
+	case 400 <= i && i <= 405:
 		i -= 400
 		return _OpCode_name_3[_OpCode_index_3[i]:_OpCode_index_3[i+1]]
 	case 500 <= i && i <= 502:

@@ -13,13 +13,12 @@ type vCtx struct {
 }
 
 type functionCtx struct {
-	Vm        *vCtx
-	InstrPtr  int
-	Function  *function.Function
-	Stack     data.Stack[data.Value]
-	Locals    map[int]data.Value
-	Arguments []data.Value
-	Running   bool
+	Vm       *vCtx
+	InstrPtr int
+	Function *function.Function
+	Stack    data.Stack[data.Value]
+	Locals   map[int]data.Value
+	Running  bool
 }
 
 func RunVm(vm *vm.Vm) {
